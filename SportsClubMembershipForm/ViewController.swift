@@ -4,6 +4,8 @@
 // Created by Annabelle
 //
 
+//Created by Annabelle
+
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -43,9 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var successMessageLabel: UILabel!
-    
-    @IBOutlet weak var emptyMessageLabel: UILabel!
+
     
     let dateFormatter = DateFormatter()
     
@@ -62,8 +62,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateTextField.inputView = datePicker
-        datePicker.datePickerMode = .date
-        dateTextField.text = dateFormatter.string(from: datePicker.date)
+        //datePicker.datePickerMode = .date
+        //dateTextField.text = dateFormatter.string(from: datePicker.date)
         
         firstnameLabel.delegate = self
         lastnameLabel.delegate = self
@@ -74,6 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         cityLabel.delegate = self
         regionLabel.delegate = self
         zipCodeLabel.delegate = self
+        coutryTextField.delegate = self
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -121,6 +122,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let city = cityLabel.text
         let region = regionLabel.text
         let zipcode = zipCodeLabel.text
+
         
         
 //
@@ -141,6 +143,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return
             
         }
+        else {
+            var myAlert2 = UIAlertController(title: "You have successfully sent the data!", message: "Congratulations!", preferredStyle: UIAlertController.Style.alert)
+            
+            self.present(myAlert2, animated: true, completion: nil)
+            
+            return
+        }
+        
+        
         
         
         
@@ -188,7 +199,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         coutryTextField.text = countries[row]
-        coutryTextField.resignFirstResponder()
+        //coutryTextField.resignFirstResponder()
     }
     
     
